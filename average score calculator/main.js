@@ -2,9 +2,75 @@ var main = document.getElementById("main");
 var loading = document.getElementById("loading");
 var scoreData = null;
 var semesterArray = new Array();
+var exceptionText = "查询成绩异常! 请检查是否登录并打开成绩查询页面, 重启本程序";
+
+// 程序所需的cookie
+var weu = null;
+var mod = null;
 
 main.style.display = "none";
-getScoreData();
+getWeu(getScoreData);
+
+function getWeu(callback)
+{
+	chrome.cookies.get({url: "http://ehall.xjtu.edu.cn/jwapp/", name: "_WEU"},
+	function(weuCookie)
+	{
+		if (weuCookie == null)
+		{
+			weu = localStorage.averageScoreWeu;
+			if (!weu)
+			{
+				loading.textContent = exceptionText;
+				return;
+			}
+			chrome.cookies.set({
+				url: "http://ehall.xjtu.edu.cn/jwapp/",
+				name: "_WEU",
+				value: weu,
+				domain: "ehall.xjtu.edu.cn",
+				path: "/jwapp/"
+			});
+		}
+		else
+		{
+			weu = weuCookie.value;
+			localStorage.averageScoreWeu = weu;
+		}
+		getMod(callback)
+	});
+}
+
+function getMod(callback)
+{
+	chrome.cookies.get({url: "http://ehall.xjtu.edu.cn/", name: "MOD_AMP_AUTH"},
+	function(modCookie)
+	{
+		if (modCookie == null)
+		{
+			mod = localStorage.averageScoreMod;
+			if (!mod)
+			{
+				loading.textContent = exceptionText;
+				return;
+			}
+			chrome.cookies.set({
+				url: "http://ehall.xjtu.edu.cn/",
+				name: "MOD_AMP_AUTH",
+				value: mod,
+				domain: "ehall.xjtu.edu.cn",
+				path: "/"
+			});
+		}
+		else
+		{
+			mod = modCookie.value;
+			localStorage.averageScoreMod = mod;
+		}
+		callback();
+	});
+	
+}
 
 document.getElementById("query").onclick = function()
 {
@@ -23,7 +89,7 @@ function getScoreData()
 	{
 		if (xhr.responseText[0] != '{')
 		{
-			loading.textContent = "查询成绩异常! 请检查是否登录并打开成绩查询页面, 重启本程序";
+			loading.textContent = exceptionText;
 			return;
 		}
 		main.style.display = "flex";
@@ -90,7 +156,7 @@ function calAverageScore(scoreData, isMajorOnly, semester)
 
 	if (totalCredit == 0)
     {
-		console.log("您所查询的学期不含任何成绩!请检查Cookie和学期是否输入正确!");
+		loading.textContent = "您所查询的学期不含任何成绩!请检查Cookie和学期是否输入正确!";
         return null;
 	}
     return totalScore / totalCredit;

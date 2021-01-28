@@ -6,10 +6,10 @@
 #### 如果您使用的是`Chrome`浏览器
 
 1. 请下载`average score calculator.zip`并解压；
-
 2. 请打开`Chrome`设置，选择左侧"扩展程序"，选择"加载已解压的扩展程序"，选择解压后的文件夹`average score calculator`并点击"选择文件夹"；
 3. 用`Chrome`浏览器登陆http://ehall.xjtu.edu.cn/，进入"成绩查询"服务；
-4. 在`Chrome`浏览器右上角点击拼图样图标，打开`average score calculator`扩展程序，按提示操作。
+4. 在`Chrome`浏览器右上角点击拼图样图标，打开`average score calculator`扩展程序，按提示操作；
+5. 此后再查询无需登录。
 
 #### 使用`Python`脚本
 

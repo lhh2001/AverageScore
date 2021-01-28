@@ -17,6 +17,9 @@
 		"default_popup": "popup.html"
 	},
 	"permissions": [
+		"cookies",
+		"http://ehall.xjtu.edu.cn/jwapp/",
+		"http://ehall.xjtu.edu.cn/",
 		"http://ehall.xjtu.edu.cn/jwapp/sys/cjcx/modules/cjcx/jddzpjcxcj.do"
     ]
 }
