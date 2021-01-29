@@ -9,14 +9,24 @@
 	<div class="container">
 		<span id="loading">查询成绩中...</span>
 		<div id="main" class="main">
-			<select id="semester">
-				<option value ="all">all</option>
-			</select>
-			<input type="button" id="query" value="查询" />
-			<div>不含通识核心的主修成绩为: </div>
-			<div id="major-score" class="score"></div> <!--主修成绩-->
-			<div>含通识核心的总成绩为: </div>
-			<div id="total-score" class="score"></div> <!--包含核心通识的成绩-->
+			<div>
+				<select id="semester">
+					<option value ="all">all</option>
+				</select>
+				<input type="button" id="query" value="查询" />
+			</div>
+			<div class="show-score">
+				<div>不含通识核心的主修成绩为: </div>
+				<div id="major-score" class="score"></div> <!--主修成绩-->
+			</div>
+			<div class="show-score">
+				<div>含通识核心的总成绩为: </div>
+				<div id="total-score" class="score"></div> <!--包含核心通识的成绩-->
+			</div>
+			<table>
+				<tbody id="score-table-body">
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<script src="main.js"></script>

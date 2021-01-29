@@ -1,7 +1,5 @@
 .container {
-	width: 150px;
-	min-height: 150px;
-	max-height: 150px;
+	width: 240px;
 	overflow-y: auto;
 	padding: 10px 5px;
 	display: flex;
@@ -15,6 +13,44 @@
 	flex-grow: 1;
 }
 
+.show-score {
+	margin-top: 10px;
+}
+
 .score {
 	font-weight: bold;
+}
+
+#semester {
+	width: 150px;
+	outline: none;
+}
+
+#query {
+	width: 50px;
+	font-size: 10px;
+	margin-left: 5px;
+	outline: none;
+}
+
+table {
+	margin-top: 10px;
+	border-collapse: collapse;
+	background: #ccc;
+}
+
+th,td {
+	height: 25px;
+	line-height: 15px;
+	text-align: center;
+	border: 1px solid #ccc;
+	min-width: 30px;
+}
+
+th {
+	background: #eee;
+}
+
+tr {
+	background: #fff;
 }
