@@ -1,6 +1,11 @@
 # AverageScore
 西安交通大学平均分计算器
 
+### 引用声明
+
+1. https://github.com/hxgf/smoke.js
+2. https://github.com/brix/crypto-js
+
 ### 使用方法
 
 #### 如果您使用的是`Chrome`浏览器
