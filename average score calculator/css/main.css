@@ -1,0 +1,106 @@
+body {
+	width: 240px;
+	min-height: 100px;
+}
+
+.container {
+	overflow-y: auto;
+	padding: 10px 5px;
+	display: flex;
+	flex-direction: column;
+}
+
+#username, #pwd {
+	margin-bottom: 10px;
+}
+
+#verify-code {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+
+#verify-code-text {
+	width: 100px;
+}
+
+#login-button {
+	align-self: flex-end;
+}
+
+#header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 20px;
+	margin-bottom: 20px;
+	font-size: 14px;
+	width: 205px;
+}
+
+#welcome {
+	width: 150px;
+}
+
+#clear-cache {
+	font-size: 10px;
+	cursor: pointer;
+	user-select: none;
+}
+
+#clear-cache:hover {
+	font-weight: bold;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.show-score {
+	margin-top: 10px;
+}
+
+.score {
+	font-weight: bold;
+}
+
+#semester {
+	width: 150px;
+}
+
+#query {
+	width: 50px;
+	font-size: 10px;
+	margin-left: 5px;
+}
+
+input {
+	outline: none;
+}
+
+table {
+	margin-top: 10px;
+	border-collapse: collapse;
+	background: #ccc;
+}
+
+th,td {
+	height: 25px;
+	line-height: 15px;
+	text-align: center;
+	border: 1px solid #ccc;
+	min-width: 30px;
+}
+
+th {
+	background: #eee;
+}
+
+tr {
+	background: #fff;
+}

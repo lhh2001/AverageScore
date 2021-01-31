@@ -3,11 +3,26 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/smoke.css">
 </head>
 <body>
-	<div class="container">
-		<span id="loading">查询成绩中...</span>
+	<div class="container" id="login"> <!--登录界面-->
+		<input type="text" id="username" placeholder="学工号/手机号/NetID/身份证" />
+		<input type="password" id="pwd" placeholder="请输入密码" />
+		<div id="verify-code">
+			<input type="text" id="verify-code-text" placeholder="验证码" />
+			<img src="" alt="验证码" id="verify-code-img" />
+		</div>
+		<input type="button" id="login-button" value="登录" />
+	</div>
+
+	<div class="container" id="score">
+		<div id="header">
+			<div id="welcome"></div>
+			<div id="clear-cache">退出登录</div>
+		</div>
+		<div id="loading">查询成绩中...</div>
 		<div id="main" class="main">
 			<div>
 				<select id="semester">
@@ -29,6 +44,10 @@
 			</table>
 		</div>
 	</div>
-	<script src="main.js"></script>
+	<script src="scripts/smoke.min.js"></script>
+	<script src="scripts/crypto.js"></script> <!--加密库-->
+	<script src="scripts/login.js"></script> <!--登录所需函数-->
+	<script src="scripts/score.js"></script>
+	<script src="scripts/main.js"></script>
 </body>
 </html>

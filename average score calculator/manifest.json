@@ -1,25 +1,28 @@
 {
 	"manifest_version": 2,
-	"name": "average score calculator",
-	"version": "1.0",
-	"description": "Average score calculator for XJTU.",
+
+	"name": "西交均分计算器",
+	"version": "2.0",
+	"description": "西安交通大学均分计算器，可以查询成绩、计算均分。Last modified by lhh on Jan 31, 2021.",
+
 	"icons": {
         "16": "images/icon16.png",
         "48": "images/icon48.png",
         "128": "images/icon128.png"
-    },
+	},
+	
 	"browser_action": {
 		"default_icon": {
             "19": "images/icon19.png",
             "38": "images/icon38.png"
         },
-		"default_title": "average score calculator",
+		"default_title": "西交均分计算器",
 		"default_popup": "popup.html"
 	},
+
 	"permissions": [
 		"cookies",
-		"http://ehall.xjtu.edu.cn/jwapp/",
 		"http://ehall.xjtu.edu.cn/",
-		"http://ehall.xjtu.edu.cn/jwapp/sys/cjcx/modules/cjcx/jddzpjcxcj.do"
+		"http://org.xjtu.edu.cn/"
     ]
 }
