@@ -16,7 +16,7 @@
 
 #### 如果您使用的是`Edge`浏览器
 
-请打开`Edge`浏览器，直接在[Edge扩展程序商店](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home/)中搜索"西交均分计算器"并安装即可。
+请打开`Edge`浏览器，访问`Edge`扩展商店中的[西交均分计算器](https://microsoftedge.microsoft.com/addons/detail/leplkebpijjeknkbmomojmhdbflibebj)中并点击"获取"即可。
 
 #### 使用`Python`脚本
 
