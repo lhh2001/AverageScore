@@ -14,6 +14,10 @@
 2. 请打开`Chrome`设置，选择左侧"扩展程序"，选择"加载已解压的扩展程序"，选择解压后的文件夹`average score calculator`并点击"选择文件夹"；
 4. 在`Chrome`浏览器右上角点击拼图样图标，打开`average score calculator`扩展程序，按提示操作。
 
+#### 如果您使用的是`Edge`浏览器
+
+请打开`Edge`浏览器，直接在[Edge扩展程序商店](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home/)中搜索"西交均分计算器"并安装即可。
+
 #### 使用`Python`脚本
 
 语言：`Python 3.7`
