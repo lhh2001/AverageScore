@@ -1,5 +1,5 @@
 //本部分完成和成绩查询、分析及显示相关的操作
-document.getElementById("score").onkeypress = function(event) //绑定回车事件为点击"查询"
+document.getElementById("score").onkeyup = function(event) //绑定回车事件为点击"查询"
 {
 	if (event.key === "Enter")
 	{
@@ -7,11 +7,61 @@ document.getElementById("score").onkeypress = function(event) //绑定回车事�
 	}
 }
 
+document.getElementById("select-all").onclick = function(event) //全选 & 全不选
+{
+	let checkBoxContainer = document.getElementById("semester");
+	let checkBoxs = checkBoxContainer.getElementsByTagName("input");
+
+	let checked = document.getElementById("select-all").value === "全选" ? true : false;
+
+	for (let i = 0; i < checkBoxs.length; i++)
+	{
+		if (checkBoxs[i].checked ^ checked)
+		{
+			checkBoxs[i].click();
+		}
+	}
+}
+
+function onCheckedChange() //checkbox的checked属性改变事件
+{
+	let checkBoxContainer = document.getElementById("semester");
+	let checkBoxs = checkBoxContainer.getElementsByTagName("input");
+
+	let cnt = 0;
+
+	for (let i = 0; i < checkBoxs.length; i++)
+	{
+		if (checkBoxs[i].checked)
+		{
+			cnt++;
+		}
+	}
+
+	if (cnt === semesterArray.length)
+	{
+		document.getElementById("select-all").value = "全不选";
+	}
+	else
+	{
+		document.getElementById("select-all").value = "全选";
+	}
+}
+
 document.getElementById("query").onclick = function() //绑定点击"查询"的事件
 {
-	let selectObj = document.getElementById("semester");
-	let semesterIndex = selectObj.selectedIndex;
-	let semester = selectObj.options[semesterIndex].text;
+	let checkBoxContainer = document.getElementById("semester");
+	let checkBoxs = checkBoxContainer.getElementsByTagName("input");
+	let semester = new Array();
+
+	for (let i = 0; i < checkBoxs.length; i++)
+	{
+		if (checkBoxs[i].checked)
+		{
+			semester.push(checkBoxs[i].value);
+		}
+	}
+
 	analyzeScoreData(semester);
 }
 
@@ -97,7 +147,9 @@ function getScoreData() //调用成绩查询的接口获得所有成绩
 		//请求成功, 显示"选择学期"和"查询"
 		let main = document.getElementById("main");
 		main.style.display = "flex";
-		loading.textContent = "选择学期";
+		loading.textContent = "选择学期: ";
+
+		let checkBoxContainer = document.getElementById("semester");
 
 		//获得成绩表中所有不重复的学期
 		for (let i = 0; i < scoreData.length; i++)
@@ -106,10 +158,22 @@ function getScoreData() //调用成绩查询的接口获得所有成绩
 			if (semesterArray.indexOf(currSemester) === -1)
 			{
 				semesterArray.push(currSemester);
-				let option = document.createElement("option");
-				option.value = currSemester;
-				option.textContent = currSemester;
-				document.getElementById("semester").appendChild(option);
+
+				let label = document.createElement("label");
+				label.className = "semester-checkbox";
+
+				let checkbox = document.createElement("input");
+				checkbox.type = "checkbox";
+				checkbox.value = currSemester;
+				checkbox.onclick = onCheckedChange;
+
+				let text = document.createElement("a");
+				text.textContent = currSemester;
+
+				label.appendChild(checkbox);
+				label.appendChild(text);
+
+				checkBoxContainer.appendChild(label);
 			}
 		}
 	}
@@ -137,12 +201,9 @@ function calAverageScore(isMajorOnly, semester) //计算平均分的具体操作
 
 	for (let i = 0; i < scoreData.length; i++)
 	{
-		if (semester !== "all")
+		if (semester.findIndex(e => e === scoreData[i]["XNXQDM"]) === -1)
 		{
-			if (scoreData[i]["XNXQDM"] !== semester)
-			{
-				continue;
-			}
+			continue;
 		}
 		
 		if (isMajorOnly === true)
@@ -175,5 +236,9 @@ function calAverageScore(isMajorOnly, semester) //计算平均分的具体操作
 		loading.textContent = "分析出现异常! 您所查询的学期不含任何成绩!";
 		return null;
 	}
-	return totalScore / totalCredit;
+	else
+	{
+		loading.textContent = "选择学期: ";
+		return totalScore / totalCredit;
+	}
 }
