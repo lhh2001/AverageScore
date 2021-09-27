@@ -14,11 +14,11 @@ function getLoginAppId(userName, pwd) //获得登录到ehall的appId
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         sendLoginRequest(userName, pwd);
     }
-	xhr.send();
+    xhr.send();
 }
 
 function sendLoginRequest(userName, pwd)
@@ -29,8 +29,8 @@ function sendLoginRequest(userName, pwd)
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         try
         {
             let reData = JSON.parse(xhr.responseText);
@@ -81,7 +81,7 @@ function sendLoginRequest(userName, pwd)
     {
         sendData["jcaptchaCode"] = document.getElementById("verify-code-text").value;
     }
-	xhr.send(JSON.stringify(sendData));
+    xhr.send(JSON.stringify(sendData));
 }
 
 document.getElementById("clear-cache").onclick = function() //退出登录事件
@@ -90,13 +90,13 @@ document.getElementById("clear-cache").onclick = function() //退出登录事件
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         localStorage.removeItem("averageScoreUserName");
         localStorage.removeItem("averageScoreUserPwd");
         window.close();
     }
-	xhr.send();
+    xhr.send();
 }
 
 document.getElementById("login").onkeypress = function(event) //绑定回车事件为点击"登录"
@@ -121,8 +121,8 @@ document.getElementById("verify-code-img").onclick = function() //点击验证�
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         try
         {
             let imgUrl = "data:image/png;base64," + JSON.parse(xhr.responseText)["data"];
@@ -133,7 +133,7 @@ document.getElementById("verify-code-img").onclick = function() //点击验证�
             console.log(e);
         }
     }
-	xhr.send();
+    xhr.send();
 }
 
 function getUserIdentity(memberId) //获得身份
@@ -142,8 +142,8 @@ function getUserIdentity(memberId) //获得身份
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         try
         {
             let reData = JSON.parse(xhr.responseText)["data"][0];
@@ -154,7 +154,7 @@ function getUserIdentity(memberId) //获得身份
             console.log(e);
         }
     }
-	xhr.send();
+    xhr.send();
 }
 
 function getRedirectUrl(userType, personNo)
@@ -164,8 +164,8 @@ function getRedirectUrl(userType, personNo)
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         try
         {
             visitEhall(JSON.parse(xhr.responseText)["data"]);
@@ -175,7 +175,7 @@ function getRedirectUrl(userType, personNo)
             console.log(e);
         }
     }
-	xhr.send();
+    xhr.send();
 }
 
 function visitEhall(url) //访问ehall首页以获取Cookies
@@ -183,8 +183,8 @@ function visitEhall(url) //访问ehall首页以获取Cookies
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         try
         {
             sendSelectRoleRequest();
@@ -194,7 +194,7 @@ function visitEhall(url) //访问ehall首页以获取Cookies
             console.log(e);
         }
     }
-	xhr.send();
+    xhr.send();
 }
 
 function loadLocalUserInfo() //加载本地信息
@@ -218,8 +218,8 @@ function hasLogin()
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-	xhr.onloadend = function()
-	{
+    xhr.onloadend = function()
+    {
         let reData = null;
         try
         {

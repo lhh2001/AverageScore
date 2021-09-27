@@ -6,11 +6,11 @@ var tableHead = "<tr><th>课程</th><th>学分</th><th>绩点</th><th>成绩</th
 
 window.onload = function()
 {
-	//所有初始要设置display为none的数组
-	let displayNoneEleId = ["login", "score", "verify-code", "main"];
-	for (let i = 0; i <displayNoneEleId.length; i++)
-	{
-		document.getElementById(displayNoneEleId[i]).style.display = "none";
-	}
-	hasLogin(); //先判断是否登录
+    //由所有初始display属性为none的标签的id组成的数组
+    let displayNoneEleId = ["login", "score", "verify-code", "main"];
+    for (let i = 0; i <displayNoneEleId.length; i++)
+    {
+        document.getElementById(displayNoneEleId[i]).style.display = "none";
+    }
+    hasLogin(); //先判断是否登录
 }
