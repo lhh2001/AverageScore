@@ -185,8 +185,24 @@ function analyzeScoreData(semester) //分析得出平均分并显示
     
     let majScore = calAverageScore(true, semester);
     let totScore = calAverageScore(false, semester);
-    document.getElementById("major-score").textContent = majScore.toFixed(6);
-    document.getElementById("total-score").textContent = totScore.toFixed(6);
+
+    if (majScore !== null)
+    {
+        document.getElementById("major-score").textContent = majScore.toFixed(6);
+    }
+    else
+    {
+        document.getElementById("major-score").textContent = "null";
+    }
+
+    if (totScore !== null)
+    {
+        document.getElementById("total-score").textContent = totScore.toFixed(6);
+    }
+    else
+    {
+        document.getElementById("total-score").textContent = "null";
+    }
 }
 
 function calAverageScore(isMajorOnly, semester) //计算平均分的具体操作
@@ -231,7 +247,7 @@ function calAverageScore(isMajorOnly, semester) //计算平均分的具体操作
         totalCredit += parseFloat(scoreData[i]["XF"]);
     }
 
-    if (totalCredit === 0)
+    if (Math.abs(totalCredit - 0.0) < Number.EPSILON)
     {
         loading.textContent = "分析出现异常! 您所查询的学期不含任何成绩!";
         return null;
