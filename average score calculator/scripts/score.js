@@ -243,8 +243,11 @@ function calAverageScore(isMajorOnly, semester) //计算平均分的具体操作
             document.getElementById("score-table-body").appendChild(tr);
         }
 
-        totalScore += scoreData[i]["ZCJ"] * parseFloat(scoreData[i]["XF"]);
-        totalCredit += parseFloat(scoreData[i]["XF"]);
+        if (scoreData[i]["TSYYDM_DISPLAY"] !== "缓考") // 缓考科目不计入成绩
+        {
+            totalScore += scoreData[i]["ZCJ"] * parseFloat(scoreData[i]["XF"]);
+            totalCredit += parseFloat(scoreData[i]["XF"]);
+        }
     }
 
     if (Math.abs(totalCredit - 0.0) < Number.EPSILON)
