@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 
 	"name": "西交均分计算器",
-	"version": "2.1",
+	"version": "2.3",
 	"description": "西安交通大学均分计算器，可以查询成绩、计算均分。",
 
 	"icons": {
